@@ -1,3 +1,5 @@
+<%@include file="connect.jsp"%>
+<%@include file="getcookies.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,9 +35,17 @@
   <div class="wrapper">
     <div class="left">
       <img src="profile-default.jpg" alt="user" width="150" height="500">
-      <h1>vignesh</h1>
-      <p>duller</p>
-
+      <h1><%
+        String roll=(String)session.getAttribute("rollno");
+        ResultSet rs=s.executeQuery("Select members from buses where roll_no='"+roll+"';");
+        if(rs.next())
+        {
+            out.println(rs.getString(1));
+        }
+        else
+        out.println(roll);
+        %>
+    </h1>
     </div>
     <div class="right">
 

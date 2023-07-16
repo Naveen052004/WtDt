@@ -27,6 +27,8 @@
       margin: 10px 20px;
       margin-right: 4pxpx;
       background-color: #f8f9fa;
+      height: 600px;
+      overflow: scroll;
     }
 
     .container {
@@ -36,7 +38,10 @@
       width: 20%;
       margin: 10px 0px;
       background-color: #f8f9fa;
-      overflow-y: auto;
+      overflow: scroll;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     #complaint-textarea {
@@ -59,6 +64,16 @@
     .complaintNo{
       width: 14%;
     }
+    .filter{
+      padding-right: 100px;
+      margin: 0px 10px;
+    }.options{
+      
+    }
+    .statusoptions{
+      padding: 0px 40px;
+      margin: 10px 52px;
+    }
   </style>
 </head>
 <body>
@@ -67,28 +82,28 @@
       <a class="navbar-brand" href="#">Complaint System</a>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="anotherpage.html">profile</a>
+          <a class="nav-link" href="anotherpage.html">Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="anotherpage.html">services</a>
+          <a class="nav-link" href="anotherpage.html">Services</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="anotherpage.html">location</a>
+          <a class="nav-link" href="anotherpage.html">Location</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="anotherpage.html">contact us</a>
+          <a class="nav-link" href="anotherpage.html">Contact us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="anotherpage.html">complaints</a>
+          <a class="nav-link" href="anotherpage.html">Complaints</a>
         </li>
       </ul>
     </nav>
   </header>
   <%@page import="java.sql.*"%>
   <%
-  Connection c=DriverManager.getConnection("jdbc:mysql://localhost:3306/pbl","root","Naveen@123");
+  Connection c=DriverManager.getConnection("jdbc:mysql://localhost:3306/pbl2.0","root","Naveen@123");
   Statement s=c.createStatement();
-  String str="select * from complaintable;";
+  String str="select sd_no,b.roll_no,date,bus_no,complaints,status from complaintable c,buses b where b.roll_no=c.roll_no;";
   ResultSet rs=s.executeQuery(str);
   %>
   <div id="content">
@@ -98,9 +113,11 @@
         <thead>
           <tr>
             <th class="ComplaintNo">ComplaintNo</th>
+            <th>Roll No</th>
             <th>Date</th>
             <th>Bus</th>
             <th>Complaint</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody id="complaint-table-body">
@@ -108,48 +125,42 @@
           <% while(rs.next())
           {%>
           <tr>
-            <td><%=rs.getString(1)%></td>
+            <td><input type="checkbox" value="<%=rs.getString(1)%>" name="status"> <%=rs.getString(1)%></td>
             <td><%=rs.getString(2)%></td>
             <td><%=rs.getString(3)%></td>
             <td><%=rs.getString(4)%></td>
+            <td><%=rs.getString(5)%></td>
+            <td><%=rs.getString(6)%></td>
           </tr>
         <%}%>
         </tbody>
       </table>
     </div>
-      <div class="container">
-        <span>
-          <h2 class="he">Complaint Here</h2>
-        </span>
-
-        <span class="common-complaints">
-          <select id="common-complaints" onchange="addComplaint()">
-            <option value="">Select a common complaint</option>
-            <option value="Late Bus">Late Bus</option>
-            <option value="Rude Driver">Rude Driver</option>
-            <option value="Uncomfortable Seats">Uncomfortable Seats</option>
-            <option value="Dirty Bus">Dirty Bus</option>
-            <option value="Others">Others</option>
-          </select>
-          <select id="BUS" onchange="">
-            <option value="">Select bus</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-          </select>
-        </span>
-
-        <div id="complaint-textarea">
-          <h4>Submit a Complaint</h4>
-          <textarea class="form-control" id="t1" rows="5" placeholder="Enter your complaint" disabled></textarea>
-          <button class="btn btn-primary mt-3" id="submit-btn">Submit</button>
-        </div>
+    
+    <div class="container">
+        <form action="" class="options">
+        <%
+        String buses[] = { "ALL", "3", "8", "10", "11", "16", "20", "29", "31" };
+        %>
+        <h6 style="display: inline-block;">Select Bus : </h6>
+        <select name="" id="" class="filter">
+          <%
+          for(int i=0;i<buses.length;i++){
+            String temp=buses[i]; 
+            %>
+            <option value="<%=temp%>"><%=temp%></option><%
+          }
+          %>
+        </select>
+        <br><br>
+        <input type="button" value="Resolved" style="display: block"class="statusoptions">
+        <input type="button" value="Denied" style="display: block;" class="statusoptions">
+      </form>
       </div>
 
     <script>
       // JavaScript code to update the complaint count dynamically
-      var complaintCount = 0;
+      // var complaintCount = 0;
       function addComplaint() {
         val=document.getElementById("common-complaints").value;
         area=document.getElementById("t1");
@@ -164,65 +175,57 @@
         }
       }
 
-      function addBus() {
-        var selectElement = document.getElementById("BUS");
-        var selectedValue = selectElement.value;
-        var complaintInput = document.getElementById("t1");
-
-        if (selectedValue) {
-          complaintInput.value += "Bus: " + selectedValue + "\n";
-          selectElement.value = "";
-        }
-      }
-
-      function updateComplaintCount() {
-        var countElement = document.getElementById('complaint-count');
-        countElement.textContent = complaintCount;
-      }
+      // function updateComplaintCount() {
+      //   var countElement = document.getElementById('complaint-count');
+      //   countElement.textContent = complaintCount;
+      // }
 
       // Example event listener for submitting a complaint
-      var submitButton = document.querySelector('#submit-btn');
-      submitButton.addEventListener('click', function() {
-        var textarea = document.querySelector('#complaint-textarea textarea');
-        var complaint = textarea.value.trim();
+      // var submitButton = document.querySelector('#submit-btn');
+      // submitButton.addEventListener('click', function() {
+      //   var textarea = document.querySelector('#complaint-textarea textarea');
+      //   var complaint = textarea.value.trim();
 
-        if (complaint !== '') {
-          // Get current date and time
-          var now = new Date();
-          var date = now.toLocaleDateString();
-          var time = now.toLocaleTimeString();
+      //   if (complaint !== '') {
+      //     // Get current date and time
+      //     var now = new Date();
+      //     var date = now.toLocaleDateString();
+      //     var time = now.toLocaleTimeString();
 
-          // Create a new row for the complaint
-          var tbody = document.querySelector('#complaint-table-body');
-          var newRow = document.createElement('tr');
-          var dateCell = document.createElement('td');
-          var complaintCell = document.createElement('td');
-          var busCell = document.createElement('td');
-          dateCell.textContent = date + ' ' + time;
-          complaintCell.textContent = complaint;
-          busCell.textContent = getBusNumber(complaint);
-          newRow.appendChild(dateCell);
-          newRow.appendChild(complaintCell);
-          newRow.appendChild(busCell);
-          tbody.insertBefore(newRow, tbody.firstChild);
+      //     // Create a new row for the complaint
+      //     var tbody = document.querySelector('#complaint-table-body');
+      //     var newRow = document.createElement('tr');
+      //     var dateCell = document.createElement('td');
+      //     var complaintCell = document.createElement('td');
+      //     var busCell = document.createElement('td');
+      //     dateCell.textContent = date + ' ' + time;
+      //     complaintCell.textContent = complaint;
+      //     busCell.textContent = getBusNumber(complaint);
+      //     newRow.appendChild(dateCell);
+      //     newRow.appendChild(complaintCell);
+      //     newRow.appendChild(busCell);
+      //     tbody.insertBefore(newRow, tbody.firstChild);
 
-          // Increase the complaint count
-          complaintCount++;
-          updateComplaintCount();
+      //     // Increase the complaint count
+      //     complaintCount++;
+      //     updateComplaintCount();
 
-          // Clear the textarea
-          textarea.value = '';
-        }
-      });
+      //     // Clear the textarea
+      //     // textarea.value = '';
+      //   }
+      // });
 
-      function getBusNumber(complaint) {
-        var regex = /Bus: (\d+)/;
-        var match = complaint.match(regex);
-        return match ? match[1] : '';
-      }
+      // function getBusNumber(complaint) {
+      //   var regex = /Bus: (\d+)/;
+      //   var match = complaint.match(regex);
+      //   return match ? match[1] : '';
+      // }
 
       // Call the function initially to set the complaint count
-      updateComplaintCount();
+      // updateComplaintCount();
+
+      // function update(){
+      // }
     </script>
   </div>
 </body>

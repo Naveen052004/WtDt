@@ -8,3 +8,6 @@ for(Cookie cook:c){
 }
 response.sendRedirect("login.html");
 %>
+<script>
+    localStorage.clear();
+</script>
