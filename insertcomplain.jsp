@@ -14,7 +14,10 @@ try{
     insertstatement.setString(1,rollno);
     insertstatement.setString(2,request.getParameter("complaintarea"));
     insertstatement.executeUpdate();
-    response.sendRedirect("studentcomplains.jsp");
+    out.println("<script>");
+    out.println("alert('Complaint Submitted');");
+    out.println("window.location = 'studentcomplains.jsp';</script>");
+    // response.sendRedirect("");
 }
 catch(Exception e){
     out.println(e);

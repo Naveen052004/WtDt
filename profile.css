@@ -15,12 +15,13 @@ body {
 
 .wrapper {
     position: absolute;
-    top: 50%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 1450px;
     display: flex;
     box-shadow: 0 1px 20px 0 rgba(69, 90, 10, 0.08);
+    margin: 3px;
 }
 
 .wrapper .left {

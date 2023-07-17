@@ -9,6 +9,7 @@
   <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
   <link rel="stylesheet" href="profile.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link href='buttons.css' rel='stylesheet'>
   <script src="cookies.js"></script>
   <style>
     .navbuttons{
@@ -24,11 +25,11 @@
 <body>
   <div class="top-bar">
     
-    <a href="home.html" class ="navbuttons button">Home</a>
+    <a href="home.html" class ="button-17" role="button">Home</a>
     
-    <a href="home.html" class ="navbuttons button">Save</a>
+    <a href="changepassword.html" class="button-17" role="button">Change Password</a>
       
-    <a href="logout.jsp" class ="navbuttons button">Logout</a>
+    <a href="logout.jsp" class ="button-17">Logout</a>
       
     
 </div>
@@ -95,6 +96,7 @@
     <li><a href="#"><i class="fab fa-twitter"></i></a></li>
     <li><a href="#"><i class="fab fa-instagram"></i></a></li>
 </ul>
+
 </div>
 
     </div>
