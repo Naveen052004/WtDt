@@ -84,7 +84,7 @@
             <a class="nav-link" href="anotherpage.html">Services</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="anotherpage.html">Location</a>
+            <a class="nav-link" href="loc2.html" target="_blank">Location</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="anotherpage.html">Contact us</a>

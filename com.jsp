@@ -77,24 +77,24 @@
   </style>
 </head>
 <body>
-  <header id="header">
+  <<header id="header">
     <nav class="navbar navbar-expand navbar-dark bg-dark">
       <a class="navbar-brand" href="#">Complaint System</a>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="anotherpage.html">Profile</a>
+            <a class="nav-link" href="home.html">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="anotherpage.html">Services</a>
+            <a class="nav-link" href="anotherpage.html">Services</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="anotherpage.html">Location</a>
+            <a class="nav-link" href="loc2.html">Location</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="anotherpage.html">Contact us</a>
+            <a class="nav-link" href="anotherpage.html">Contact us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="anotherpage.html">Complaints</a>
+            <a class="nav-link" href="profile.jsp">Profile</a>
         </li>
       </ul>
     </nav>

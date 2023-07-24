@@ -6,7 +6,7 @@ for(Cookie temp:ck){
     if((temp.getName()).equals("name")){
         cookiename=temp.getValue();
         session.setAttribute("cookiename",cookiename);
-        session.setAttribute("rollno",cookiename.substring(0,cookiename.indexOf('@')));
+        //session.setAttribute("rollno",cookiename.substring(0,cookiename.indexOf('@')));
         count++;
     }
     else if((temp.getName()).equals("pass")){

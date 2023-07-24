@@ -1,13 +1,12 @@
 <%@include file="connect.jsp"%>
 <%@include file="getcookies.jsp"%>
-<script></script>
 <%
+try{
 String cookname=(String)session.getAttribute("cookiename");
-String rollno=cookname.substring(0,cookiename.indexOf('@'));
+String rollno=(String)session.getAttribute("rollno");
 //out.println(cookiename);
 //out.println(rollno);
 //out.println(request.getParameter("complaintarea"));
-try{
 
     String qinsert="Insert into complaintable(roll_no,complaints) values(?,?);";
     PreparedStatement insertstatement=cn.prepareStatement(qinsert);
