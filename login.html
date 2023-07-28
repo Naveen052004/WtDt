@@ -161,11 +161,100 @@ justify-content: space-between;
     transform: translateY(430px);
     transition-delay: 0s;
 }
+.button-33 {
+  background-color: #c2fbd7;
+  border-radius: 100px;
+  box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+  color: green;
+  cursor: pointer;
+  display: inline-block;
+  float: right;
+  font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
 
-
+.button-33:hover {
+  box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+  transform: scale(1.05) rotate(-1deg);
+}
+.marginset{
+    margin-top:5px ;
+    margin-right: 10px;
+}
+.diastyle button,input{
+    background-color: #92c27f;
+    padding: 5px;
+}
+.diastyle dialog{
+    width: max-content;
+    border: 2px solid #017503;    
+    margin: 42px 1266px;
+}
+.diastyle #dia1{
+    margin: 42px 10px;
+}
+.diastyle form{
+    text-align: center;
+    background-color: #92c27f;
+    padding: 10px;
+}
     </style>
+    <script>
+        const show1=()=>{
+            console.log("he");
+            document.getElementById("dia").show();
+        }
+        const show2=()=>{
+            console.log("he");
+            document.getElementById("dia1").show();
+        }
+        const clsdia=()=>{
+            console.log("he");
+            document.getElementById("dia").close();
+        }
+        const goto=()=>{
+            console.log("Testing");
+            window.location.replace("loc1.jsp");
+        }
+    </script>
 </head>
 <body>
+    <div class="marginset">
+        <button class="button-33" style="float: left;margin-left: 5px;" role="button" onclick="show2()">Admin Login</button>
+        <button class="button-33" role="button" onclick="show1()">Drivers Login</button>
+    </div>
+    <div class="diadiv diastyle">
+        <dialog id="dia">
+            <form method="dialog"  action="loc1.jsp">
+                <p>Login Here</p><br>
+                <label for="DriverpId">Id : </label>
+                <input type="text" name="DriverId" id="DriverId"><br><br>
+                <label for="Driverpass">Pass : </label>
+                <input type="password" name="Driverpass" id="Driverpass"><br><br>
+                <input type="submit" onclick="goto()"  value="Share Location">
+                <button onclick="clsdia()">Close</button>
+            </form>
+        </dialog>
+        <dialog id="dia1">
+            <form method="dialog" onsubmit="" action="">
+                <p>Admin Login</p><br>
+                <label for="AdminId">Id : </label>
+                <input type="text" name="AdminId" id="AdminId"><br><br>
+                <label for="AdminPass">Pass : </label>
+                <input type="password" name="AdminPass" id="AdminPass"><br><br>
+                <input type="submit"  value="Login">
+                <button>Close</button>
+            </form>
+        </dialog>
+    </div>
     <div class="login-section">
         <div class="formbox login">
 <form action="verify.jsp" method="post">

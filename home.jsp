@@ -1,3 +1,4 @@
+<%@include file="connect.jsp" %>
 <html>
 
 <head>
@@ -26,7 +27,7 @@
                         <a class="nav-link" href="https://www.geethanjaliinstitutions.com/engineering/transport.html">More Info</a>
                     </li>
                     <li class="nav-item" style="padding:0px 30px">
-                        <a class="nav-link" href="loc2.html" target="_blank">Location</a>
+                        <a class="nav-link" href="showloc.html" target="_blank">Location</a>
                     </li>
                     <li class="nav-item" style="padding:0px 30px">
                         <a class="nav-link" href="anotherpage.html">Contact us</a>
@@ -52,10 +53,10 @@
 
 
             <h1>TRANSPORT SERVICES</h1>
-            <p>reach home safe with lifes</p>
+            <p>Reach Home Safe With Lifes</p>
             <div class="banner-btn">
-                <a href="#"><span></span>Locate</a>
-                <a href="#"><span></span>Track</a>
+                <a href="showloc.html"><span></span>Locate</a>
+                <a href="studentcomplains.jsp"><span></span>Complaint</a>
             </div>
         </div>
     </section>

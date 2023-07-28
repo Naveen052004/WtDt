@@ -1,0 +1,1 @@
+<%=request.getParameter("lat")+" "+request.getParameter("lon")%>

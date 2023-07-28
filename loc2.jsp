@@ -1,3 +1,4 @@
+<%@include file="connect.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,15 +36,16 @@
         attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
         maxZoom: 18
       }).addTo(map);
-
+      var i=0;
       // Get user's location
       if (navigator.geolocation) {
         navigator.geolocation.watchPosition(function(position) {
-          // Update map center to user's location
-          var pos = [position.coords.latitude, position.coords.longitude];
+          console.log(i++);
+          let lat=Number();
+          let lon=Number();
+          var pos = [lat, lon];
           map.setView(pos);
 
-          // Update marker position or create a new marker
           if (marker) {
             marker.setLatLng(pos);
           } else {

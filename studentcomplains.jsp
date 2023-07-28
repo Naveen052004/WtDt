@@ -78,13 +78,13 @@
       <a class="navbar-brand" href="#">Complaint System</a>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-            <a class="nav-link" href="home.html">Home</a>
+            <a class="nav-link" href="home.jsp">Home</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="anotherpage.html">Services</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="loc2.html" target="_blank">Location</a>
+            <a class="nav-link" href="showloc.html" target="_blank">Location</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="anotherpage.html">Contact us</a>

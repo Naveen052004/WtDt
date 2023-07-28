@@ -25,7 +25,7 @@
 <body>
   <div class="top-bar">
     
-    <a href="home.html" class ="button-17" role="button">Home</a>
+    <a href="home.jsp" class ="button-17" role="button">Home</a>
     
     <a href="changepassword.html" class="button-17" role="button">Change Password</a>
       
@@ -76,7 +76,7 @@
 </div>
 
 <div class="projects">
-  <h3>projects</h3>
+  <h3>Fee Status</h3>
   <div class="projects_data">
     <div class="data">
       <h4 style="font-size: x-large;">recent</h4>

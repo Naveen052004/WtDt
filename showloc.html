@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Location</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+
+    <script>
+        var map;
+        var marker;
+        var currentIndex = 0;
+
+        map = L.map('map').setView([0, 0], 20);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        marker = L.marker([0, 0]).addTo(map);
+
+        updateMarker();
+
+        function updateMarker() {
+            var ajax = new XMLHttpRequest();
+            var method = "GET";
+            var url = "getcoords.jsp";
+            var async = true;
+            ajax.open(method, url, async);
+            var pos = [];
+            ajax.send();
+
+            ajax.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log("Obtained coordinates");
+                    pos = this.responseText.split(" ");
+                    // console.log(pos[0]);
+                    // console.log(pos[1]);
+                    var lat = Number(pos[0]);
+                    var lon = Number(pos[1]);
+                    marker.setLatLng([lat, lon]).update();
+                    map.setView([lat, lon], 20);
+                }
+            }
+            setInterval(updateMarker, 10000);
+        }
+    </script>
+</body>
+</html>

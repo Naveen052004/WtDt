@@ -10,7 +10,7 @@ if(rs.next())
     response.addCookie(c);
     c=new Cookie("pass",pass);
     response.addCookie(c);
-    response.sendRedirect("home.html");
+    response.sendRedirect("home.jsp");
 }
 else{%>
     <%@include file="login.html"%>

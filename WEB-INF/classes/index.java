@@ -14,7 +14,7 @@ public class index extends HttpServlet {
             for(int i=0;i<c.length;i++) {
                 if (c[i].getName().equalsIgnoreCase("name") || c[i].getName().equalsIgnoreCase("pass")) {
                     flag = 1;
-                    RequestDispatcher rd=req.getRequestDispatcher("home.html");
+                    RequestDispatcher rd=req.getRequestDispatcher("home.jsp");
                     rd.forward(req,res);
                 }
             }

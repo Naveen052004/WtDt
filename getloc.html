@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Continuous Data Retrieval</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Data from MySQL</h1>
+    <div id="dataContainer"></div>
+
+    <script>
+        function fetchData() {
+            $.ajax({
+                url: 'getcoords.jsp', // Replace with the actual JSP file URL
+                method: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    // Use the received data as JavaScript variables
+                    updateDataContainer(data);
+
+                    // Schedule the next data retrieval after 5 seconds
+                    setTimeout(fetchData, 5000);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error fetching data:', status, error);
+                    // Schedule the next data retrieval after 5 seconds
+                    setTimeout(fetchData, 5000);
+                }
+            });
+        }
+
+        function updateDataContainer(data) {
+            // Clear the existing data in the container
+            $('#dataContainer').empty();
+
+            // Append the new data to the container
+            data.forEach(function(item) {
+                $('#dataContainer').append('<p>' + item.lat + ', Name: ' + item.lon+'</p>');
+            });
+        }
+
+        fetchData();
+    </script>
+</body>
+</html>
