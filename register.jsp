@@ -15,5 +15,5 @@ Cookie ck=new Cookie("name",request.getParameter("email"));
 response.addCookie(ck);
 ck=new Cookie("pass",request.getParameter("pass1"));
 response.addCookie(ck);
-response.sendRedirect("home.html");
+response.sendRedirect("home.jsp");
 %>

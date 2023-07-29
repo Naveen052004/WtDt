@@ -11,7 +11,6 @@ try{
     %>
     <jsp:forward page="getcoords1.jsp">  
     <jsp:param name="lat" value="<%=lat%>" />
-    
     <jsp:param name="lon" value="<%=lon%>" />  
     </jsp:forward>
 <%}catch(Exception e){

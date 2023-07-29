@@ -28,8 +28,7 @@
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
         marker = L.marker([0, 0]).addTo(map);
 
-        updateMarker();
-
+        
         function updateMarker() {
             var ajax = new XMLHttpRequest();
             var method = "GET";
@@ -38,7 +37,6 @@
             ajax.open(method, url, async);
             var pos = [];
             ajax.send();
-
             ajax.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     console.log("Obtained coordinates");
@@ -51,8 +49,9 @@
                     map.setView([lat, lon], 20);
                 }
             }
-            setInterval(updateMarker, 10000);
         }
-    </script>
+        updateMarker();
+        setInterval(updateMarker, 5000);
+        </script>
 </body>
 </html>
