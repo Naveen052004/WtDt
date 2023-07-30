@@ -220,6 +220,10 @@ justify-content: space-between;
             console.log("he");
             document.getElementById("dia").close();
         }
+        const clsdia1=()=>{
+            console.log("he");
+            document.getElementById("dia1").close();
+        }
         const goto=()=>{
             console.log("Testing");
             window.location.replace("loc1.jsp");
@@ -233,27 +237,27 @@ justify-content: space-between;
     </div>
     <div class="diadiv diastyle">
         <dialog id="dia">
-            <form method="dialog"  action="loc1.jsp">
+            <form action="driverlogin.jsp">
                 <p>Login Here</p><br>
                 <label for="DriverpId">Id : </label>
                 <input type="text" name="DriverId" id="DriverId"><br><br>
                 <label for="Driverpass">Pass : </label>
                 <input type="password" name="Driverpass" id="Driverpass"><br><br>
-                <input type="submit" onclick="goto()"  value="Share Location">
-                <button onclick="clsdia()">Close</button>
+                <input type="submit"  value="Share Location">
+                <button onclick="clsdia()" type="button">Close</button>
             </form>
         </dialog>
         <dialog id="dia1">
-            <form method="dialog" onsubmit="" action="">
+            <form action="adminverify.jsp">
                 <p>Admin Login</p><br>
                 <label for="AdminId">Id : </label>
                 <input type="text" name="AdminId" id="AdminId"><br><br>
                 <label for="AdminPass">Pass : </label>
                 <input type="password" name="AdminPass" id="AdminPass"><br><br>
-                <input type="submit"  value="Login">
-                <button>Close</button>
+                <button type="submit">Login</button>
+                <button onclick="clsdia1()" type="button">Close</button>
             </form>
-        </dialog>
+            </dialog>
     </div>
     <div class="login-section">
         <div class="formbox login">
